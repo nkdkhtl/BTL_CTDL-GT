@@ -9,7 +9,7 @@
 using namespace std;
 
 const int PRIME_CONST = 31;
-
+// TuDien dua tren bang bam
 class Dictionary
 {
 private:
@@ -32,15 +32,16 @@ private:
 	// {
 	// 	int oldCap = capacity;
 	// 	capacity *= 2;
-	// 	Vector<sList<string>> newTable;
+	// 	cout << capacity << " ";
+	// 	Vector<sList<string>> newTable(capacity);
 
 	// 	for (int i = 0; i < oldCap; ++i)
 	// 	{
 	// 		cout << i << " ";
 	// 		for (auto node : table[i])
 	// 		{
-	// 			cout << node->getKey() << endl;
-	// 			int newIdx = hashFunc(node->getKey()) % capacity;
+	// 			// cout << node->getKey() << endl;
+	// 			int newIdx = hashFunc(node->getKey());
 	// 			newTable[newIdx].push_back(node);
 	// 		}
 	// 	}
@@ -156,7 +157,7 @@ public:
 			addWordToFile(key, value);
 		}
 
-		// if ((float)(size * 1.0 / capacity) > loadFactorThreshold)
+		// if (((float)size / capacity) > loadFactorThreshold)
 		// {
 		// 	reHash();
 		// }
@@ -234,6 +235,7 @@ public:
 	}
 };
 
+// Chuong trinh khoi tao
 class App
 {
 private:

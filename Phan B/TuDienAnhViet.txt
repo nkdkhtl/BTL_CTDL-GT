@@ -227,3 +227,4 @@ rifle:sung truong
 delete:xoa
 laptop:may tinh xach tay
 husband:chong
+hello:xin chao
