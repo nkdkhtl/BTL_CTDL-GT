@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <cmath>
+
 class DictionaryHashTable : public HashTable<string, string>
 {
 public:
@@ -15,7 +16,6 @@ public:
         {
             hashCode += key[i] * pow(31, i);
         }
-        cout << hashCode % getCapacity() << endl;
         return hashCode % getCapacity();
     }
 };
@@ -126,7 +126,6 @@ public:
         TuDien.printTable();
     }
 };
-
 class App
 {
 private:
@@ -136,11 +135,12 @@ public:
     void run()
     {
         TuDien.generate();
-        cout << "TU DIEN ANH-VIET" << endl;
+        cout << "---------------------------------------------------" << endl;
+        cout << "             TU DIEN ANH - VIET                    " << endl;
+        cout << "---------------------------------------------------" << endl;
         int choice;
         do
         {
-            cout << "//////////////////////////" << endl;
             cout << "1: Kiem tra tu dien rong" << endl;
             cout << "2: Them 1 tu vao tu dien" << endl;
             cout << "3: Xoa 1 tu trong tu dien" << endl;
@@ -148,8 +148,8 @@ public:
             cout << "5: Tim tu theo Tieng Viet" << endl;
             cout << "6: In toan bo tu dien!" << endl;
             cout << "0: Thoat" << endl;
-            cout << "//////////////////////////" << endl;
-            cout << "Nhap lua chon: ";
+            cout << "---------------------------------------------------" << endl;
+            cout << "Chon thao tac: ";
 
             cin >> choice;
 
@@ -158,15 +158,15 @@ public:
             case 1:
                 if (TuDien.isEmpty())
                 {
-                    cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+                    cout << "---------------------------------------------------" << endl;
                     cout << "Tu dien rong!" << endl;
-                    cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+                    cout << "---------------------------------------------------" << endl;
                 }
                 else
                 {
-                    cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+                    cout << "---------------------------------------------------" << endl;
                     cout << "Tu dien da duoc nap!" << endl;
-                    cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+                    cout << "---------------------------------------------------" << endl;
                 }
                 break;
 
@@ -178,9 +178,9 @@ public:
                 getline(cin, english);
                 cout << "Nhap nghia tieng Viet: ";
                 getline(cin, vietnamese);
-                cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+                cout << "---------------------------------------------------" << endl;
                 TuDien.insertWord(english, vietnamese, 1);
-                cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+                cout << "---------------------------------------------------" << endl;
             }
             break;
 
@@ -191,9 +191,9 @@ public:
                 cin.ignore(1);
                 getline(cin, english);
                 TuDien.removeWord(english);
-                cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+                cout << "---------------------------------------------------" << endl;
                 cout << "Xoa tu thanh cong!" << endl;
-                cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+                cout << "---------------------------------------------------" << endl;
             }
             break;
 
@@ -203,9 +203,9 @@ public:
                 cout << "Nhap tu tieng Anh muon tim: ";
                 cin.ignore(1);
                 getline(cin, english);
-                cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+                cout << "---------------------------------------------------" << endl;
                 cout << TuDien.findWordByEnglish(english) << endl;
-                cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+                cout << "---------------------------------------------------" << endl;
             }
             break;
 
@@ -215,9 +215,9 @@ public:
                 cout << "Nhap tu tieng Viet muon tim: ";
                 cin.ignore(1);
                 getline(cin, vietnamese);
-                cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+                cout << "---------------------------------------------------" << endl;
                 cout << TuDien.findWordByVietnamese(vietnamese) << endl;
-                cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+                cout << "---------------------------------------------------" << endl;
             }
             break;
 
@@ -230,8 +230,7 @@ public:
                 break;
 
             default:
-                cout << "Lua chon khong hop le." << endl;
-                break;
+                cout << "Lua chon khong hop le! Vui long chon lai." << endl;
             }
         } while (choice != 0);
     }
