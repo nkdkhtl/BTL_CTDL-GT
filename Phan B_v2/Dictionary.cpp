@@ -3,13 +3,29 @@
 #include <fstream>
 #include <iostream>
 #include <cmath>
-
-int PRIME_CONST = 31;
-
-class Dictionary : public HashTable<string, string>
+class DictionaryHashTable : public HashTable<string, string>
 {
 public:
-    Dictionary(int cap = 10) : HashTable(cap) {}
+    DictionaryHashTable(int cap) : HashTable<string, string>(cap) {}
+    int hashFunc(const string &key) const override
+    {
+
+        unsigned long long hashCode = 0;
+        for (int i = 0; i < key.length(); i++)
+        {
+            hashCode += key[i] * pow(31, i);
+        }
+        cout << hashCode % getCapacity() << endl;
+        return hashCode % getCapacity();
+    }
+};
+class Dictionary
+{
+private:
+    DictionaryHashTable TuDien;
+
+public:
+    Dictionary(int cap = 10) : TuDien(cap) {}
 
     string toLowerCase(string &word)
     {
@@ -20,19 +36,8 @@ public:
         return word;
     }
 
-    int hashFunc(const string &key)
-    {
-        unsigned long long hashCode = 0;
-        for (int i = 0; i < key.length(); i++)
-        {
-            hashCode += key[i] * pow(PRIME_CONST, i);
-        }
-        return hashCode % this->getCapacity();
-    }
-    // nap file
     void generate()
     {
-
         ifstream f("TuDienAnhViet.txt");
 
         if (!f.is_open())
@@ -53,7 +58,7 @@ public:
 
     void addWordToFile(string &key, string &value)
     {
-        ofstream f("TuDienAnhViet.txt", ios::in | ios::out | ios::app);
+        ofstream f("TuDienAnhViet.txt", ios::app);
 
         if (!f.is_open())
         {
@@ -70,16 +75,20 @@ public:
 
     bool isEmpty()
     {
-        return this->getSize() == 0;
+        return TuDien.getSize() == 0;
     }
 
     void insertWord(string &key, string &value, int role)
     {
+        if (TuDien.getLoadFactor() > TuDien.getLoadFactorThreshold())
+        {
+            TuDien.reHash();
+        }
         key = toLowerCase(key);
         value = toLowerCase(value);
-        if (!contains(key))
+        if (!TuDien.contains(key))
         {
-            add(key, value);
+            TuDien.add(key, value);
             if (role)
             {
                 addWordToFile(key, value);
@@ -90,28 +99,31 @@ public:
         {
             cout << "TU NAY DA CO TRONG TU DIEN" << endl;
         }
-
-        // 0 de khoi tao , 1 la nguoi dung tao
     }
 
     string findWordByEnglish(string &key)
     {
         key = toLowerCase(key);
-        Node<string, string> *node = findByKey(key);
+        Node<string, string> *node = TuDien.findByKey(key);
         return node ? node->getValue() : "Khong tim thay trong tu dien";
     }
 
     string findWordByVietnamese(string &value)
     {
         value = toLowerCase(value);
-        Node<string, string> *node = findByValue(value);
+        Node<string, string> *node = TuDien.findByValue(value);
         return node ? node->getKey() : "Khong tim thay trong tu dien";
     }
 
     void removeWord(string &key)
     {
         key = toLowerCase(key);
-        remove(key);
+        TuDien.remove(key);
+    }
+
+    void printDictionary()
+    {
+        TuDien.printTable();
     }
 };
 
@@ -144,7 +156,6 @@ public:
             switch (choice)
             {
             case 1:
-            {
                 if (TuDien.isEmpty())
                 {
                     cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
@@ -158,12 +169,10 @@ public:
                     cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
                 }
                 break;
-            }
 
             case 2:
             {
-                string english;
-                string vietnamese;
+                string english, vietnamese;
                 cout << "Nhap tu tieng Anh muon them: ";
                 cin.ignore(1);
                 getline(cin, english);
@@ -172,8 +181,8 @@ public:
                 cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
                 TuDien.insertWord(english, vietnamese, 1);
                 cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
-                break;
             }
+            break;
 
             case 3:
             {
@@ -185,8 +194,8 @@ public:
                 cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
                 cout << "Xoa tu thanh cong!" << endl;
                 cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
-                break;
             }
+            break;
 
             case 4:
             {
@@ -197,9 +206,8 @@ public:
                 cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
                 cout << TuDien.findWordByEnglish(english) << endl;
                 cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
-
-                break;
             }
+            break;
 
             case 5:
             {
@@ -210,27 +218,28 @@ public:
                 cout << "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
                 cout << TuDien.findWordByVietnamese(vietnamese) << endl;
                 cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+            }
+            break;
 
-                break;
-            }
             case 6:
-            {
-                TuDien.printTable();
+                TuDien.printDictionary();
                 break;
-            }
+
+            case 0:
+                cout << "Ban da thoat chuong trinh!" << endl;
+                break;
+
             default:
-            {
-                cout << "Ban da thoat chuong trinh!";
-                return;
-            }
+                cout << "Lua chon khong hop le." << endl;
+                break;
             }
         } while (choice != 0);
-        cout << "Ban da thoat chuong trinh!";
     }
 };
 
-main()
+int main()
 {
     App a;
     a.run();
+    return 0;
 }

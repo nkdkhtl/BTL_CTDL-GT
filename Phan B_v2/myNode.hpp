@@ -11,7 +11,7 @@ private:
     Node *next;      // Con tro next
 
 public:
-    // khởi tạo với giá trị mặc định
+    // khoi tao
     Node(KeyType k, ValueType v) : key(k), value(v), next(nullptr) {}
 
     void setNext(Node *nextNode)

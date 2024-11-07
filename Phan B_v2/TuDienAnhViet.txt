@@ -227,3 +227,8 @@ superman:sieu nhan
 horny:nung
 what:cai gi
 pure:trong trang
+storage:kho
+pipe:ong
+paralyze:te liet
+corrupt:co lap
+cement:xi mang
