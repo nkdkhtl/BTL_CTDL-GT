@@ -77,6 +77,11 @@ public:
         return this->type;
     }
 
+    string getDescription() const
+    {
+        return this->description;
+    }
+
     string getDate() const
     {
         return this->date;
@@ -89,7 +94,7 @@ public:
     }
 };
 
-class TransactionList
+class TransactionHistory
 {
 private:
     list<Transaction> a;
@@ -120,9 +125,27 @@ public:
         file.close();
     }
 
+    void updateFile()
+    {
+        ofstream file("GD.txt");
+        if (file.is_open())
+        {
+            for (const auto &transaction : a)
+            {
+                file << transaction.getId() << "\t"
+                     << transaction.getDescription() << "\t"
+                     << transaction.getAmount() << "\t"
+                     << transaction.getType() << "\t"
+                     << transaction.getDate() << endl;
+            }
+            file.close();
+        }
+    }
+
     void addTransaction(const Transaction &b)
     {
         a.push_back(b);
+        updateFile();
     }
 
     void removeTransaction(const string &id)
@@ -135,6 +158,7 @@ public:
                 return;
             }
         }
+        updateFile();
     }
 
     void display() const
@@ -217,11 +241,13 @@ public:
              << setw(15) << "Loai"
              << setw(12) << "Ngay" << endl;
         cout << string(69, '-') << endl;
+        string ComparableStartDate = startDate.substr(6, 4) + startDate.substr(3, 2) + startDate.substr(0, 2);
+        string ComparableEndDate = endDate.substr(6, 4) + endDate.substr(3, 2) + endDate.substr(0, 2);
 
         for (const auto &x : a)
         {
             // Compare the transaction date with the given range
-            if (x.getDate() >= startDate && x.getDate() <= endDate)
+            if (x.getComparableDate() >= ComparableStartDate && x.getComparableDate() <= ComparableEndDate)
             {
                 cout << x;
             }
@@ -260,7 +286,7 @@ public:
 class App
 {
 private:
-    TransactionList a;
+    TransactionHistory a;
 
 public:
     void run()

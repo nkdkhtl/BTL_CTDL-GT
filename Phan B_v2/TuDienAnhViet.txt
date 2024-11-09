@@ -223,13 +223,13 @@ pistol:sung luc
 lunch:bua trua
 village:lang
 manager:quan ly
+culture:van hoa
 sell:ban
 star:sao
 engineer:ky su
 vaccine:vac xin
 molecule:phan tu
 scratch:vet xuoc
-student:hoc sinh
 what:cai gi
 ocean:dai duong
 doctor:bac si
