@@ -14,6 +14,55 @@ private:
 public:
     // Constructor
     SinglyLinkedList() : head(nullptr), tail(nullptr) {}
+    // Destructor
+    ~SinglyLinkedList()
+    {
+        Node<KeyType, ValueType> *temp;
+        while (head)
+        {
+            temp = head;
+            head = head->getNext();
+            delete temp;
+        }
+        tail = nullptr;
+    }
+
+    class Iterator
+    {
+    private:
+        Node<KeyType, ValueType> *curr;
+
+    public:
+        Iterator(Node<KeyType, ValueType> *node = nullptr) : curr(node) {}
+
+        bool hasNext()
+        {
+            return curr != nullptr;
+        }
+
+        void next()
+        {
+            if (curr)
+            {
+                curr = curr->getNext();
+            };
+        }
+
+        KeyType getKey() const
+        {
+            return curr->getKey();
+        }
+
+        ValueType getValue() const
+        {
+            return curr->getValue();
+        }
+
+        Iterator begin() const
+        {
+            return Iterator(head);
+        }
+    };
 
     Node<KeyType, ValueType> *getHead()
     {
@@ -24,10 +73,10 @@ public:
     void addFirst(KeyType key, ValueType value)
     {
         Node<KeyType, ValueType> *newNode = new Node<KeyType, ValueType>(key, value);
-        newNode->setNext(head); // Node mới trỏ tới head hiện tại
-        head = newNode;         // Cập nhật head là Node mới
+        newNode->setNext(head); // Node moi tro toi head hien tai
+        head = newNode;         // Cap nhat head la Node moi
 
-        // Nếu danh sách trước đó trống, tail cũng cần trỏ đến Node mới
+        // Neu danh sach truoc đo trong, tail cũng can tro đen Node moi
         if (tail == nullptr)
         {
             tail = newNode;
@@ -39,13 +88,13 @@ public:
     {
         Node<KeyType, ValueType> *newNode = new Node<KeyType, ValueType>(key, value);
         if (!tail)
-        { // Nếu danh sách trống
+        { // DS trong
             head = tail = newNode;
         }
         else
         {
-            tail->setNext(newNode); // tail hiện tại trỏ tới Node mới
-            tail = newNode;         // Cập nhật tail là Node mới
+            tail->setNext(newNode); // tail tro toi node moi
+            tail = newNode;         // cap nhat tail la node moi
         }
     }
 
@@ -53,20 +102,20 @@ public:
     void remove(KeyType key)
     {
         if (!head)
-            return; // Nếu danh sách trống
+            return; // DS trong
 
-        // Nếu Node cần xoá là head
+        // Neu node can xoa la head
         if (head->getKey() == key)
         {
             Node<KeyType, ValueType> *temp = head;
             head = head->getNext();
             delete temp;
-            if (!head) // Nếu danh sách trở nên trống sau khi xoá
+            if (!head) // Neu DS trong sau khi xoa
                 tail = nullptr;
             return;
         }
 
-        // Duyệt danh sách để tìm và xoá Node
+        // Duyet DS va tim Node
         Node<KeyType, ValueType> *temp = head;
         while (temp->getNext() && temp->getNext()->getKey() != key)
         {
@@ -77,7 +126,7 @@ public:
             Node<KeyType, ValueType> *toDelete = temp->getNext();
             temp->setNext(toDelete->getNext());
 
-            // Nếu Node xoá là Node cuối, cập nhật lại tail
+            // Nếu Node xoa là Node cuoi, cap nhat lai tail
             if (toDelete == tail)
                 tail = temp;
 
@@ -95,7 +144,7 @@ public:
                 return temp;
             temp = temp->getNext();
         }
-        return nullptr; // Trả về nullptr nếu không tìm thấy
+        return nullptr; // tra ve nullptr neu khong tim thay
     }
 
     // in cac Node trong lst
@@ -104,23 +153,10 @@ public:
         Node<KeyType, ValueType> *temp = head;
         while (temp)
         {
-            std::cout << "(\"" << temp->getKey() << "\", \"" << temp->getValue() << "\") -> ";
+            cout << "(" << temp->getKey() << ", " << temp->getValue() << ") -> ";
             temp = temp->getNext();
         }
-        std::cout << "NULL" << std::endl;
-    }
-
-    // Destructor
-    ~SinglyLinkedList()
-    {
-        Node<KeyType, ValueType> *temp;
-        while (head)
-        {
-            temp = head;
-            head = head->getNext();
-            delete temp;
-        }
-        tail = nullptr;
+        cout << "NULL" << endl;
     }
 };
 

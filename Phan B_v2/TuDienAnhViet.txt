@@ -1,235 +1,236 @@
-book:sach
-pen:but
-computer:may tinh
-phone:dien thoai
-table:ban
-chair:ghe
-window:cua so
-door:cua
-house:nha
-car:xe hoi
-bicycle:xe dap
-bus:xe buyt
-train:tau hoa
-airplane:may bay
-boat:thuyen
-ship:tau thuy
-road:duong
-street:pho
-city:thanh pho
-village:lang
-country:quoc gia
-world:the gioi
-family:gia dinh
-friend:ban be
-love:yeu
-happy:hanh phuc
-sad:buon
-angry:tuc gian
-surprised:ngac nhien
-scared:so hai
-food:thuc an
-drink:do uong
-water:nuoc
-milk:sua
-coffee:cafe
-tea:tra
-juice:nuoc ep
-bread:banh mi
-rice:com
-meat:thit
-fish:ca
-vegetable:rau
-fruit:trai cay
-sugar:duong
-salt:muoi
-pepper:tieu
-spice:gia vi
-breakfast:bua sang
-lunch:bua trua
-dinner:bua toi
-school:truong hoc
-teacher:giao vien
-student:hoc sinh
-class:lop hoc
-lesson:bai hoc
-homework:bai tap ve nha
-exam:ky thi
-grade:diem
-library:thu vien
-bookstore:nha sach
-hospital:benh vien
-doctor:bac si
-nurse:y ta
-patient:benh nhan
-medicine:thuoc
-pharmacy:nha thuoc
-police:canh sat
 firefighter:linh cuu hoa
-soldier:linh
-engineer:ky su
-scientist:nha khoa hoc
-artist:nghe si
-musician:nhac si
-singer:ca si
-actor:dien vien
-writer:nha van
-journalist:phong vien
-photographer:nha nhiep anh
-chef:bep truong
-waiter:phuc vu ban
-manager:quan ly
-boss:sep
-employee:nhan vien
-worker:cong nhan
-job:cong viec
-work:lam viec
-office:van phong
-company:cong ty
-business:kinh doanh
 market:cho
-shop:cua hang
-store:kho
-mall:trung tam thuong mai
-bank:ngan hang
-money:tien
-price:gia ca
-cost:chi phi
-cheap:re
-expensive:dat
-buy:mua
-sell:ban
-pay:tra tien
-save:tiet kiem
-spend:tieu xai
-account:tai khoan
-card:the
-cash:tien mat
-check:sec
-loan:khoan vay
-debt:no
-investment:dau tu
-profit:loi nhuan
-loss:thua lo
-income:thu nhap
-expense:chi phi
-budget:ngan sach
-tax:thue
-insurance:bao hiem
-pension:luong huu
-salary:luong
-wage:luong
-bonus:thuong
-benefit:phuc loi
-retirement:nghi huu
-garden:vuon
-park:cong vien
-beach:bai bien
-mountain:nui
-forest:rung
-desert:sa mac
-island:dao
-river:song
-lake:ho
-ocean:dai duong
-sky:bau troi
-cloud:may
-rain:mua
-snow:tuyet
-wind:gio
-storm:bao
-thunder:sam
-lightning:chop
-sun:mat troi
-moon:mat trang
-star:sao
-planet:hanh tinh
-universe:vu tru
-galaxy:ngan ha
-space:khong gian
-astronaut:phi hanh gia
-rocket:ten lua
-satellite:ve tinh
-comet:sao choi
-meteor:sao bang
-asteroid:tieu hanh tinh
-black hole:lo den
-gravity:trong luc
-orbit:quy dao
-telescope:kinh thien van
-microscope:kinh hien vi
-atom:nguyen tu
-molecule:phan tu
-cell:te bao
-dna:dna
-gene:gen
-protein:protein
-virus:virus
-bacteria:vi khuan
-fungus:nam
-plant:thuc vat
-animal:dong vat
-human:con nguoi
-body:co the
-head:dau
-face:mat
-eye:mat
-ear:tai
-nose:mui
-mouth:mieng
-tooth:rang
-tongue:luoi
-neck:co
-shoulder:vai
-arm:canh tay
-hand:tay
-finger:ngon tay
-leg:chan
-foot:ban chan
-toe:ngon chan
-heart:tim
-lung:phoi
-brain:nao
-stomach:da day
 liver:gan
-kidney:than
-bone:xuong
-muscle:co bap
-skin:da
-hair:toc
-blood:mau
-nerve:day than kinh
-clinic:phong kham
-ambulance:xe cuu thuong
-surgery:phau thuat
-therapy:tri lieu
-vaccine:vac xin
-disease:benh
+mouth:mieng
+buy:mua
+tooth:rang
+river:song
+corrupt:co lap
+pension:luong huu
+gravity:trong luc
+diet:che do an
+sun:mat troi
+homework:bai tap ve nha
+loan:khoan vay
 infection:nhiem trung
-symptom:trieu chung
-diagnosis:chan doan
-treatment:dieu tri
-recovery:phuc hoi
+car:xe hoi
+bookstore:nha sach
+benefit:phuc loi
+nutrition:dinh duong
+sad:buon
+ear:tai
+breakfast:bua sang
+vegetable:rau
+bonus:thuong
+body:co the
+hair:toc
+moon:mat trang
+road:duong
+head:dau
+food:thuc an
+sky:bau troi
+pay:tra tien
+plant:thuc vat
+tax:thue
+cash:tien mat
+vitamin:vitamin
+brain:nao
+income:thu nhap
+finger:ngon tay
+blood:mau
+profit:loi nhuan
+bone:xuong
+worker:cong nhan
+computer:may tinh
+singer:ca si
+chair:ghe
+medicine:thuoc
+milk:sua
+train:tau hoa
+lightning:chop
+orbit:quy dao
+nerve:day than kinh
+island:dao
+gene:gen
+nose:mui
+love:yeu
+world:the gioi
+hello:xin chao
+fruit:trai cay
+water:nuoc
+dna:dna
+universe:vu tru
+family:gia dinh
+black hole:lo den
+street:pho
+happy:hanh phuc
+scared:so hai
+store:kho
+beach:bai bien
 health:suc khoe
 fitness:the duc
-exercise:tap the duc
-diet:che do an
-nutrition:dinh duong
-vitamin:vitamin
-mineral:khoang chat
-pistol:sung luc
-rifle:sung truong
+planet:hanh tinh
+therapy:tri lieu
+storm:bao
+journalist:phong vien
+bacteria:vi khuan
+salt:muoi
+account:tai khoan
+rocket:ten lua
+writer:nha van
+eye:mat
+coffee:cafe
+actor:dien vien
 delete:xoa
-laptop:may tinh xach tay
-husband:chong
-hello:xin chao
-superman:sieu nhan
+treatment:dieu tri
+bread:banh mi
+disease:benh
+job:cong viec
+bank:ngan hang
+space:khong gian
+investment:dau tu
+recovery:phuc hoi
+toe:ngon chan
+spice:gia vi
+cheap:re
+window:cua so
+atom:nguyen tu
+leg:chan
+tea:tra
+door:cua
+scientist:nha khoa hoc
 horny:nung
-what:cai gi
-pure:trong trang
-storage:kho
-pipe:ong
-paralyze:te liet
-corrupt:co lap
-cement:xi mang
+park:cong vien
+artist:nghe si
+fungus:nam
+ambulance:xe cuu thuong
+pen:but
+budget:ngan sach
+nurse:y ta
+spend:tieu xai
+shoulder:vai
+teacher:giao vien
+friend:ban be
+retirement:nghi huu
+kidney:than
 lion:su tu
+laptop:may tinh xach tay
+pharmacy:nha thuoc
+airplane:may bay
+mall:trung tam thuong mai
+microscope:kinh hien vi
+galaxy:ngan ha
+comet:sao choi
+boss:sep
+city:thanh pho
+salary:luong
+class:lop hoc
+wind:gio
+satellite:ve tinh
+library:thu vien
+storage:kho
+chef:bep truong
+company:cong ty
+tongue:luoi
+virus:virus
+bicycle:xe dap
+loss:thua lo
+money:tien
+boat:thuyen
+soldier:linh
+patient:benh nhan
+animal:dong vat
+ship:tau thuy
+hospital:benh vien
+rice:com
+lesson:bai hoc
+check:sec
+rifle:sung truong
+price:gia ca
+expensive:dat
+shop:cua hang
+musician:nhac si
+debt:no
+foot:ban chan
+pipe:ong
+cost:chi phi
+meteor:sao bang
+meat:thit
+grade:diem
+drink:do uong
+insurance:bao hiem
+clinic:phong kham
+pepper:tieu
+waiter:phuc vu ban
+arm:canh tay
+superman:sieu nhan
+angry:tuc gian
+police:canh sat
+asteroid:tieu hanh tinh
+skin:da
+stomach:da day
+paralyze:te liet
+telescope:kinh thien van
+symptom:trieu chung
+mineral:khoang chat
+garden:vuon
+rain:mua
+human:con nguoi
+phone:dien thoai
+muscle:co bap
+diagnosis:chan doan
+card:the
+hand:tay
+surgery:phau thuat
+cloud:may
+sugar:duong
+book:sach
+husband:chong
+business:kinh doanh
+cement:xi mang
+exam:ky thi
+protein:protein
+neck:co
+forest:rung
+office:van phong
+face:mat
+heart:tim
+pure:trong trang
+desert:sa mac
+school:truong hoc
+table:ban
+dinner:bua toi
+astronaut:phi hanh gia
+work:lam viec
+employee:nhan vien
+photographer:nha nhiep anh
+mountain:nui
+lake:ho
+country:quoc gia
+expense:chi phi
+number:so
+surprised:ngac nhien
+wage:luong
+snow:tuyet
+cell:te bao
+house:nha
+juice:nuoc ep
+thunder:sam
+save:tiet kiem
+exercise:tap the duc
+fish:ca
+pistol:sung luc
+lunch:bua trua
+village:lang
+manager:quan ly
+sell:ban
+star:sao
+engineer:ky su
+vaccine:vac xin
+molecule:phan tu
+scratch:vet xuoc
+student:hoc sinh
+what:cai gi
+ocean:dai duong
+doctor:bac si
+bus:xe buyt

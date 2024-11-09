@@ -3,26 +3,20 @@
 #include <fstream>
 #include <iostream>
 #include <cmath>
-
-class DictionaryHashTable : public HashTable<string, string>
+int hashFunc(string key, int capacity)
 {
-public:
-    DictionaryHashTable(int cap) : HashTable<string, string>(cap) {}
-    int hashFunc(const string &key) const override
+    unsigned long long hashCode = 0;
+    for (int i = 0; i < key.length(); i++)
     {
-
-        unsigned long long hashCode = 0;
-        for (int i = 0; i < key.length(); i++)
-        {
-            hashCode += key[i] * pow(31, i);
-        }
-        return hashCode % getCapacity();
+        hashCode += key[i] * pow(31, i);
     }
-};
+    return hashCode % capacity;
+}
+
 class Dictionary
 {
 private:
-    DictionaryHashTable TuDien;
+    HashTable<string, string> TuDien;
 
 public:
     Dictionary(int cap = 10) : TuDien(cap) {}
@@ -56,21 +50,26 @@ public:
         f.close();
     }
 
-    void addWordToFile(string &key, string &value)
+    void updateFile()
     {
-        ofstream f("TuDienAnhViet.txt", ios::app);
-
+        ofstream f("TuDienAnhViet.txt", ios::trunc); // Open file in truncate mode to clear existing content
         if (!f.is_open())
         {
-            cout << "Cap nhat tu dien khong thanh cong!\n";
+            cout << "Cap nhat tap tin khong thanh cong!" << endl;
             return;
         }
-        else
+
+        for (int i = 0; i < TuDien.getCapacity(); ++i)
         {
-            string pair = key + ':' + value;
-            f << pair << endl;
-            f.close();
+            Node<string, string> *curr = TuDien.getBucket(i)->getHead();
+            while (curr)
+            {
+                f << curr->getKey() << ':' << curr->getValue() << endl;
+                curr = curr->getNext();
+            }
         }
+
+        f.close();
     }
 
     bool isEmpty()
@@ -82,29 +81,35 @@ public:
     {
         if (TuDien.getLoadFactor() > TuDien.getLoadFactorThreshold())
         {
-            TuDien.reHash();
+            TuDien.reHash(hashFunc);
         }
         key = toLowerCase(key);
         value = toLowerCase(value);
-        if (!TuDien.contains(key))
+        if (!TuDien.contains(key, hashFunc))
         {
-            TuDien.add(key, value);
+            TuDien.add(key, value, hashFunc);
+
             if (role)
             {
-                addWordToFile(key, value);
                 cout << "THEM TU THANH CONG" << endl;
             }
         }
         else
         {
-            cout << "TU NAY DA CO TRONG TU DIEN" << endl;
+            TuDien.remove(key, hashFunc);
+            TuDien.add(key, value, hashFunc);
+            if (role)
+            {
+                updateFile();
+                cout << "DA SUA DOI TU BAN THEM TRONG TU DIEN" << endl;
+            }
         }
     }
 
     string findWordByEnglish(string &key)
     {
         key = toLowerCase(key);
-        Node<string, string> *node = TuDien.findByKey(key);
+        Node<string, string> *node = TuDien.findByKey(key, hashFunc);
         return node ? node->getValue() : "Khong tim thay trong tu dien";
     }
 
@@ -118,7 +123,8 @@ public:
     void removeWord(string &key)
     {
         key = toLowerCase(key);
-        TuDien.remove(key);
+        TuDien.remove(key, hashFunc);
+        updateFile();
     }
 
     void printDictionary()

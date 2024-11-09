@@ -14,10 +14,6 @@ private:
     float loadFactorThreshold = 0.75;
 
 public:
-    virtual int hashFunc(const KeyType &key) const
-    {
-        return std::hash<KeyType>{}(key) % capacity;
-    }
     // khoi tao
     HashTable()
     {
@@ -35,7 +31,7 @@ public:
         delete[] table;
     }
 
-    void reHash()
+    void reHash(int (*hashFunc)(KeyType, int))
     {
         int oldCap = capacity;
         capacity = capacity * 2;
@@ -49,7 +45,7 @@ public:
 
             while (curr)
             {
-                int newIdx = hashFunc(curr->getKey());
+                int newIdx = hashFunc(curr->getKey(), capacity);
                 newTable[newIdx].addLast(curr->getKey(), curr->getValue());
                 curr = curr->getNext();
             }
@@ -84,9 +80,14 @@ public:
         return this->loadFactorThreshold;
     }
 
-    bool contains(const KeyType &key)
+    SinglyLinkedList<KeyType, ValueType> *getBucket(int index) const
     {
-        int idx = hashFunc(key);
+        return &table[index];
+    }
+
+    bool contains(const KeyType key, int (*hashFunc)(KeyType, int))
+    {
+        int idx = hashFunc(key, capacity);
         Node<KeyType, ValueType> *foundNode = table[idx].find(key);
         return foundNode != nullptr;
     }
@@ -96,10 +97,10 @@ public:
         return size;
     }
 
-    Node<KeyType, ValueType> *add(const KeyType &key, const ValueType &value)
+    Node<KeyType, ValueType> *add(const KeyType key, const ValueType &value, int (*hashFunc)(KeyType, int))
     {
 
-        int idx = hashFunc(key);
+        int idx = hashFunc(key, capacity);
         Node<KeyType, ValueType> *foundNode = table[idx].find(key);
         // Neu tim thay
         if (foundNode)
@@ -113,16 +114,16 @@ public:
         return table[idx].find(key);
     }
 
-    void remove(const KeyType &key)
+    void remove(const KeyType key, int (*hashFunc)(KeyType, int))
     {
-        int idx = hashFunc(key);
+        int idx = hashFunc(key, capacity);
         table[idx].remove(key);
         --size;
     }
 
-    Node<KeyType, ValueType> *findByKey(const KeyType &key)
+    Node<KeyType, ValueType> *findByKey(const KeyType key, int (*hashFunc)(KeyType, int))
     {
-        int idx = hashFunc(key);
+        int idx = hashFunc(key, capacity);
         return table[idx].find(key);
     }
 
