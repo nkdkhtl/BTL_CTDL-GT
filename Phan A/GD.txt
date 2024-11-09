@@ -2,7 +2,9 @@ GD001	Mua dien thoai	5000000	ChiPhi	01/01/2024
 GD002	Luong thang 1	10000000	ThuNhap	15/01/2024
 GD003	Mua laptop	20000000	ChiPhi	20/01/2024
 GD004	Ban xe cu	1500000	ThuNhap	25/01/2024
-T010	Mua xang	40000	ChiPhi	12/05/2024
+GD010	Mua xang	40000	ChiPhi	12/05/2024
+GD021	An xien ban	100000	ChiPhi	25/10/2024
 GD006	Sua chua nha	3000000	ChiPhi	10/11/2024
+GD012	Sua xe	300000	ChiPhi	21/12/2024
 GD005	Tien thuong cuoi nam	8000000	ThuNhap	31/12/2024
-T021	An xien ban	100000	ChiPhi	25/10/2024
+GD013	Tien luong thang 10	12000000	ThuNhap	05/10/2024

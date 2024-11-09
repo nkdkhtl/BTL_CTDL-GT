@@ -230,6 +230,7 @@ engineer:ky su
 vaccine:vac xin
 molecule:phan tu
 scratch:vet xuoc
+student:hoc sinh
 what:cai gi
 ocean:dai duong
 doctor:bac si

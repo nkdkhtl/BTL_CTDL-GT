@@ -230,6 +230,7 @@ public:
                 return x;
             }
         }
+        cout << "KHONG TIM THAY GIAO DICH" << endl;
     }
 
     void filterByDateRange(const string &startDate, const string &endDate) const
@@ -300,12 +301,13 @@ public:
         {
             cout << "1: Them GD" << endl;
             cout << "2: Xoa GD" << endl;
-            cout << "3: Danh sach GD" << endl;
-            cout << "4: Tim GD lon nhat" << endl;
-            cout << "5: Tim GD nho nhat" << endl;
-            cout << "6: Tong thu nhap" << endl;
-            cout << "7: Tong chi phi" << endl;
-            cout << "8: In giao dich trong khoang ngay" << endl;
+            cout << "3: Tim GD" << endl;
+            cout << "4: Danh sach GD" << endl;
+            cout << "5: In giao dich trong khoang ngay" << endl;
+            cout << "6: Tim GD lon nhat" << endl;
+            cout << "7: Tim GD nho nhat" << endl;
+            cout << "8: Tong thu nhap" << endl;
+            cout << "9: Tong chi phi" << endl;
             cout << "0: Thoat" << endl;
             cout << "---------------------------------------------------" << endl;
             cout << "Chon thao tac: ";
@@ -334,39 +336,21 @@ public:
 
             case 3:
             {
-                a.sortTransactions();
-                a.display();
+                string id;
+                cout << "Nhap ma GD can tim: ";
+                cin >> id;
+                cout << a.findTransaction(id) << endl;
                 break;
             }
 
             case 4:
             {
-                Transaction maxTrans = a.findMaxTransactions();
-                cout << "Giao dich lon nhat: " << maxTrans << endl;
+                a.sortTransactions();
+                a.display();
                 break;
             }
 
             case 5:
-            {
-                Transaction minTrans = a.findMinTransactions();
-                cout << "Giao dich nho nhat: " << minTrans << endl;
-                break;
-            }
-
-            case 6:
-            {
-                cout << "Tong thu nhap: ";
-                a.totalIncome();
-                break;
-            }
-
-            case 7:
-            {
-                cout << "Tong chi phi: ";
-                a.totalExpense();
-                break;
-            }
-            case 8:
             {
                 string startDate, endDate;
                 cout << "Nhap ngay bat dau (dd/mm/yyyy): ";
@@ -374,6 +358,34 @@ public:
                 cout << "Nhap ngay ket thuc (dd/mm/yyyy): ";
                 cin >> endDate;
                 a.filterByDateRange(startDate, endDate);
+                break;
+            }
+
+            case 6:
+            {
+                Transaction maxTrans = a.findMaxTransactions();
+                cout << "Giao dich lon nhat: " << maxTrans << endl;
+                break;
+            }
+
+            case 7:
+            {
+                Transaction minTrans = a.findMinTransactions();
+                cout << "Giao dich nho nhat: " << minTrans << endl;
+                break;
+            }
+
+            case 8:
+            {
+                cout << "Tong thu nhap: ";
+                a.totalIncome();
+                break;
+            }
+
+            case 9:
+            {
+                cout << "Tong chi phi: ";
+                a.totalExpense();
                 break;
             }
 
