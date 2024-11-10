@@ -35,7 +35,6 @@ public:
     {
         int oldCap = capacity;
         capacity = capacity * 2;
-        cout << "NEW CAPACITY: " << capacity << endl;
         // Tao bang moi voi x2 capacity
         SinglyLinkedList<KeyType, ValueType> *newTable = new SinglyLinkedList<KeyType, ValueType>[capacity];
 

@@ -91,18 +91,28 @@ public:
 
             if (role)
             {
+                updateFile();
                 cout << "THEM TU THANH CONG" << endl;
             }
         }
         else
         {
+            cout << "TU NAY DA CO TRONG TU DIEN" << endl;
+        }
+    }
+
+    void modifyWord(string &key, string &value)
+    {
+        if (TuDien.contains(key, hashFunc))
+        {
             TuDien.remove(key, hashFunc);
             TuDien.add(key, value, hashFunc);
-            if (role)
-            {
-                updateFile();
-                cout << "DA SUA DOI TU BAN THEM TRONG TU DIEN" << endl;
-            }
+            updateFile();
+            cout << "DA SUA DOI TU BAN THEM TRONG TU DIEN" << endl;
+        }
+        else
+        {
+            cout << "KHONG TIM THAY TU NAY TRONG TU DIEN" << endl;
         }
     }
 
@@ -110,21 +120,29 @@ public:
     {
         key = toLowerCase(key);
         Node<string, string> *node = TuDien.findByKey(key, hashFunc);
-        return node ? node->getValue() : "Khong tim thay trong tu dien";
+        return node ? node->getValue() : "KHONG TIM THAY TU NAY TRONG TU DIEN";
     }
 
     string findWordByVietnamese(string &value)
     {
         value = toLowerCase(value);
         Node<string, string> *node = TuDien.findByValue(value);
-        return node ? node->getKey() : "Khong tim thay trong tu dien";
+        return node ? node->getKey() : "KHONG TIM THAY TU NAY TRONG TU DIEN";
     }
 
     void removeWord(string &key)
     {
         key = toLowerCase(key);
-        TuDien.remove(key, hashFunc);
-        updateFile();
+        if (TuDien.contains(key, hashFunc))
+        {
+            TuDien.remove(key, hashFunc);
+            updateFile();
+            cout << "XOA TU THANH CONG" << endl;
+        }
+        else
+        {
+            cout << "KHONG TIM THAY TU NAY TRONG TU DIEN" << endl;
+        }
     }
 
     void printDictionary()
@@ -149,10 +167,11 @@ public:
         {
             cout << "1: Kiem tra tu dien rong" << endl;
             cout << "2: Them 1 tu vao tu dien" << endl;
-            cout << "3: Xoa 1 tu trong tu dien" << endl;
-            cout << "4: Tim tu theo Tieng Anh" << endl;
-            cout << "5: Tim tu theo Tieng Viet" << endl;
-            cout << "6: In toan bo tu dien!" << endl;
+            cout << "3: Sua 1 tu trong tu dien" << endl;
+            cout << "4: Xoa 1 tu trong tu dien" << endl;
+            cout << "5: Tim tu theo Tieng Anh" << endl;
+            cout << "6: Tim tu theo Tieng Viet" << endl;
+            cout << "7: In toan bo tu dien!" << endl;
             cout << "0: Thoat" << endl;
             cout << "---------------------------------------------------" << endl;
             cout << "Chon thao tac: ";
@@ -193,17 +212,31 @@ public:
             case 3:
             {
                 string english;
-                cout << "Nhap tu tieng Anh muon xoa: ";
+                cout << "Nhap tu tieng Anh muon sua: ";
                 cin.ignore(1);
                 getline(cin, english);
-                TuDien.removeWord(english);
+                string vietnamese;
+                cout << "Nhap nghia tieng Viet cua tu muon sua: ";
+                getline(cin, vietnamese);
                 cout << "---------------------------------------------------" << endl;
-                cout << "Xoa tu thanh cong!" << endl;
+                TuDien.modifyWord(english, vietnamese);
                 cout << "---------------------------------------------------" << endl;
             }
             break;
 
             case 4:
+            {
+                string english;
+                cout << "Nhap tu tieng Anh muon xoa: ";
+                cin.ignore(1);
+                getline(cin, english);
+                cout << "---------------------------------------------------" << endl;
+                TuDien.removeWord(english);
+                cout << "---------------------------------------------------" << endl;
+            }
+            break;
+
+            case 5:
             {
                 string english;
                 cout << "Nhap tu tieng Anh muon tim: ";
@@ -215,7 +248,7 @@ public:
             }
             break;
 
-            case 5:
+            case 6:
             {
                 string vietnamese;
                 cout << "Nhap tu tieng Viet muon tim: ";
@@ -227,7 +260,7 @@ public:
             }
             break;
 
-            case 6:
+            case 7:
                 TuDien.printDictionary();
                 break;
 

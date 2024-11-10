@@ -199,26 +199,8 @@ public:
 
     void sortTransactions()
     {
-        for (auto it1 = a.begin(); it1 != a.end(); ++it1)
-        {
-            auto minIt = it1;
-
-            auto it2 = it1;
-            ++it2;
-
-            for (; it2 != a.end(); ++it2)
-            {
-                if (it2->getComparableDate() < minIt->getComparableDate())
-                {
-                    minIt = it2;
-                }
-            }
-
-            if (minIt != it1)
-            {
-                iter_swap(it1, minIt);
-            }
-        }
+        a.sort([](const Transaction &t1, const Transaction &t2)
+               { return t1.getComparableDate() < t2.getComparableDate(); });
     }
 
     Transaction findTransaction(const string &id) const
@@ -244,10 +226,9 @@ public:
         cout << string(69, '-') << endl;
         string ComparableStartDate = startDate.substr(6, 4) + startDate.substr(3, 2) + startDate.substr(0, 2);
         string ComparableEndDate = endDate.substr(6, 4) + endDate.substr(3, 2) + endDate.substr(0, 2);
-
         for (const auto &x : a)
         {
-            // Compare the transaction date with the given range
+            // So sánh ngày tháng từ StartDate -> EndDate
             if (x.getComparableDate() >= ComparableStartDate && x.getComparableDate() <= ComparableEndDate)
             {
                 cout << x;
