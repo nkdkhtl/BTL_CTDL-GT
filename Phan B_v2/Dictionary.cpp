@@ -8,7 +8,7 @@ int hashFunc(string key, int capacity)
     unsigned long long hashCode = 0;
     for (int i = 0; i < key.length(); i++)
     {
-        hashCode += key[i] * pow(31, i);
+        hashCode += key[i] * pow(29, i);
     }
     return hashCode % capacity;
 }
@@ -52,7 +52,7 @@ public:
 
     void updateFile()
     {
-        ofstream f("TuDienAnhViet.txt", ios::trunc); // Open file in truncate mode to clear existing content
+        ofstream f("TuDienAnhViet.txt", ios::trunc); // Xoa tat ca du lieu trong file roi moi nhap
         if (!f.is_open())
         {
             cout << "Cap nhat tap tin khong thanh cong!" << endl;
