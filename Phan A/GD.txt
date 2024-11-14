@@ -8,3 +8,4 @@ GD006	Sua chua nha	3000000	ChiPhi	10/11/2024
 GD012	Sua xe	300000	ChiPhi	21/12/2024
 GD005	Tien thuong cuoi nam	8000000	ThuNhap	31/12/2024
 GD013	Tien luong thang 10	12000000	ThuNhap	05/10/2024
+GD012	Mua nha	4000000000	ChiPhi	25/12/2020

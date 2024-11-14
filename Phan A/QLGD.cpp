@@ -45,15 +45,11 @@ public:
 
     friend ostream &operator<<(ostream &out, const Transaction &a)
     {
-        out << a.id
-            << "\t"
-            << a.description
-            << "\t\t\t"
-            << a.amount
-            << "\t"
-            << a.type
-            << "\t"
-            << a.date << endl;
+        out << left << setw(10) << a.id
+            << setw(25) << a.description
+            << right << setw(15) << a.amount << "  "
+            << left << setw(10) << a.type
+            << setw(12) << a.date << endl;
         return out;
     }
 
@@ -163,12 +159,17 @@ public:
 
     void display() const
     {
-        cout << "ID\tMoTa\t\t\t\tSoTien\tLoai\tNgay" << endl;
-        cout << "---------------------------------------------------" << endl;
+        cout << left << setw(10) << "ID"
+             << setw(32) << "Mo Ta"
+             << setw(12) << "So Tien"
+             << setw(10) << "Loai"
+             << setw(10) << "Ngay" << endl;
+        cout << string(72, '-') << endl;
         for (const auto &x : a)
         {
-            cout << x << endl;
+            cout << x;
         }
+        cout << endl;
     }
 
     void totalIncome() const
@@ -219,11 +220,11 @@ public:
     {
         cout << "Giao dich tu " << startDate << " den " << endDate << ":" << endl;
         cout << left << setw(10) << "ID"
-             << setw(20) << "Mo Ta"
+             << setw(32) << "Mo Ta"
              << setw(12) << "So Tien"
-             << setw(15) << "Loai"
-             << setw(12) << "Ngay" << endl;
-        cout << string(69, '-') << endl;
+             << setw(10) << "Loai"
+             << setw(10) << "Ngay" << endl;
+        cout << string(72, '-') << endl;
         string ComparableStartDate = startDate.substr(6, 4) + startDate.substr(3, 2) + startDate.substr(0, 2);
         string ComparableEndDate = endDate.substr(6, 4) + endDate.substr(3, 2) + endDate.substr(0, 2);
         for (const auto &x : a)
