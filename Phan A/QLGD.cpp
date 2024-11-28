@@ -5,6 +5,8 @@
 #include <list>
 #include <string>
 #include <iomanip>
+#include <map>
+
 using namespace std;
 
 class Transaction
@@ -264,6 +266,34 @@ public:
 
         return minTransaction;
     }
+
+    string datePayMax()
+    {
+        map<string, unsigned long long> expensePerDate;
+        string maxDate;
+        unsigned long long maxExpense = 0;
+
+        // Tinh chi phi
+        for (const auto &transaction : a)
+        {
+            if (transaction.getType() == "ChiPhi")
+            {
+                expensePerDate[transaction.getDate()] += transaction.getAmount();
+            }
+        }
+
+        // Tim ngay co tong chi phi lon nhat
+        for (const auto &entry : expensePerDate)
+        {
+            if (entry.second > maxExpense)
+            {
+                maxExpense = entry.second;
+                maxDate = entry.first;
+            }
+        }
+        filterByDateRange(maxDate, maxDate);
+        return maxDate;
+    }
 };
 
 class App
@@ -290,6 +320,7 @@ public:
             cout << "7: Tim GD nho nhat" << endl;
             cout << "8: Tong thu nhap" << endl;
             cout << "9: Tong chi phi" << endl;
+            cout << "10: Tim ngay chi tieu nhieu nhat" << endl;
             cout << "0: Thoat" << endl;
             cout << "---------------------------------------------------" << endl;
             cout << "Chon thao tac: ";
@@ -368,6 +399,13 @@ public:
             {
                 cout << "Tong chi phi: ";
                 a.totalExpense();
+                break;
+            }
+
+            case 10:
+            {
+                string dateMax = a.datePayMax();
+                cout << "Ngay tieu nhieu tien nhat: " << dateMax << endl;
                 break;
             }
 
